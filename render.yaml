@@ -1,0 +1,11 @@
+# Описание сервера для хостинга Render.com (бесплатный тариф).
+# Render сам прочитает этот файл, если вы создадите проект через "New -> Blueprint".
+services:
+  - type: web
+    name: allscaner-api
+    runtime: python
+    rootDir: server
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
